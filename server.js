@@ -5,7 +5,6 @@ const app = express();
 const config = require('config');
 const cors = require('cors');
 const port = process.env.PORT || 3000;
-app.use(cors());
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser');
@@ -20,6 +19,7 @@ const accessTokenKey = 'My super secret key';
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(cors());
 
 var url =
 	'mongodb+srv://rakesh:rakesh@cluster0.qctgi.mongodb.net/personalbudget?retryWrites=true&w=majority';
@@ -43,7 +43,7 @@ app.use(express.json());
 app.use('/users', users);
 app.use('/auth', auth);
 app.use('/budget', budget);
-//app.use('', express.static('public'));
+//app.use('',express.static('public'));
 
 app.listen(port, () => {
 	console.log('App is running on port ' + port);
