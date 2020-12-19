@@ -16,7 +16,6 @@ const users = require('./routes/users');
 const auth = require('./routes/auth');
 const budget = require('./routes/budget');
 
-const port = 3000;
 const accessTokenKey = 'My super secret key';
 
 app.use(bodyParser.urlencoded({ extended: true }));
