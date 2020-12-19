@@ -9,8 +9,8 @@ const exjwt = require('express-jwt');
 const cors = require('cors');
 router.use(cors());
 
-const accessTokenKey = 'My super secret key';
-
+const accessTokenKey = 'My secret key';
+console.log("token");
 const jwtMW = exjwt({
     secret: accessTokenKey,
     algorithms: ['HS256']
@@ -40,6 +40,11 @@ router.post('/', async (req, res) => {
         loginStatus
     })
 });
+
+router.get('/',(req,res)=>{
+    console.log("inside");
+    res.send("Working");    
+})
 
  
 module.exports = router; 

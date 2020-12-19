@@ -4,6 +4,7 @@ const express = require('express');
 const app = express();
 const config = require('config');
 const cors = require('cors');
+const port = process.env.PORT || 3000;
 app.use(cors());
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
@@ -33,17 +34,17 @@ mongoose
 	.then(() => console.log('Now connected to MongoDB!'))
 	.catch((err) => console.error('Something went wrong', err));
 
-app.use((req, res, next) => {
-	res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-	res.setHeader('Access-Control-Allow-Headers', 'Content-type,Authorization');
-	next();
-});
+// app.use((req, res, next) => {
+// 	res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+// 	res.setHeader('Access-Control-Allow-Headers', 'Content-type,Authorization');
+// 	next();
+// });
 
 app.use(express.json());
 app.use('/users', users);
 app.use('/auth', auth);
 app.use('/budget', budget);
-app.use('', express.static('public'));
+//app.use('', express.static('public'));
 
 app.listen(port, () => {
 	console.log('App is running on port ' + port);
